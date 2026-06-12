@@ -445,6 +445,16 @@ def show_prediksi():
         align-items: center; justify-content: center;
         padding: 6px 12px; border-radius: 4px; font-size: 13px; font-weight: 800;
     }
+
+    @media (max-width: 768px) {
+        section[data-testid="stMain"] > div.block-container { padding: 120px 20px 40px 20px !important; }
+        .p-sidebar { width: 100%; position: relative; min-height: auto; padding: 20px; }
+        .p-header { left: 0; width: 100%; padding: 0 20px; }
+        .p-logout { margin-top: 40px; }
+        .p-result-card { padding: 20px; min-height: auto; }
+        .p-result-legend { grid-template-columns: 1fr 1fr; }
+        .p-rtable { display: block; overflow-x: auto; white-space: nowrap; }
+    }
     </style>
     """, unsafe_allow_html=True)
 

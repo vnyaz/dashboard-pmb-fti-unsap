@@ -391,6 +391,17 @@ def show_historis():
         border-top: 1px solid rgba(255,255,255,0.25);
         color: rgba(255,255,255,0.6); line-height: 1.35; font-size: 16px;
     }
+    .stTextInput input:focus, .stSelectbox select:focus, .stNumberInput input:focus { border-color: #4a9498 !important; box-shadow: none !important; }
+
+    @media (max-width: 768px) {
+        .dh-outer { flex-direction: column; }
+        .dh-sidebar { width: 100%; position: relative; min-height: auto; padding: 20px; }
+        .dh-main { margin-left: 0; }
+        .logout-link { margin-top: 40px; }
+        .dh-content { padding: 20px; }
+        .summary-grid, .btn-row, .edit-btn-row { grid-template-columns: 1fr; gap: 16px; }
+        .dh-header { padding: 0 20px; }
+    }
     .logout-link {
         margin-top: 220px; color: white !important; text-decoration: none !important;
         display: flex; align-items: center; gap: 12px; font-size: 16px;

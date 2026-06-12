@@ -136,6 +136,11 @@ def login_page():
                        line-height:1.22; margin-bottom:18px; }
         .login-title span { display:block; font-size:25px; }
         [data-testid="stAlert"] { margin-top:14px; }
+        @media (max-width: 768px) {
+            .block-container { margin-top: 40px !important; padding: 30px 20px !important; }
+            .login-title { font-size: 24px; }
+            .login-title span { font-size: 20px; }
+        }
         </style>
         """,
         unsafe_allow_html=True,

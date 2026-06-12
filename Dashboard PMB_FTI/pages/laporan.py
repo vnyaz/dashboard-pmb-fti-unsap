@@ -834,6 +834,16 @@ def show_visualisasi_laporan():
     .pred-table td{{padding:7px 12px;border-bottom:1px solid #dde;}}
     .pred-tag{{color:#e67e22;font-weight:700;}}.aktual-tag{{color:#4a9498;font-weight:700;}}
     .empty-msg{{background:white;padding:28px;color:#52666d;font-size:15px;font-weight:700;border-radius:4px;}}
+
+    @media (max-width: 768px) {
+        .vis-shell { grid-template-columns: 1fr; display: flex; flex-direction: column; }
+        .vis-sidebar { min-height: auto; padding: 20px; }
+        .logout-link { margin-top: 40px; }
+        .vis-content { padding: 20px; }
+        .kpi-grid, .mid-grid, .eks-grid { grid-template-columns: 1fr; gap: 16px; }
+        .ctrl-panel { flex-direction: column; align-items: flex-start; gap: 16px; }
+        .pred-table { display: block; overflow-x: auto; white-space: nowrap; }
+    }
     </style>
 
     <div class="vis-shell">

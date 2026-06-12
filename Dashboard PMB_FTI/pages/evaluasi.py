@@ -244,6 +244,15 @@ def show_evaluasi():
     .interp-item {{ background:#f7fafb; border-left:4px solid #4a9498; padding:16px 18px; border-radius:0 4px 4px 0; }}
     .interp-metric {{ color:#4a9498; font-size:14px; font-weight:800; margin-bottom:8px; }}
     .interp-desc {{ color:#3a4f58; font-size:13px; font-weight:600; line-height:1.6; }}
+
+    @media (max-width: 768px) {
+        .eval-shell { grid-template-columns: 1fr; display: flex; flex-direction: column; }
+        .eval-sidebar { min-height: auto; padding: 20px; }
+        .logout-link { margin-top: 40px; }
+        .eval-content { padding: 20px; }
+        .metric-grid { grid-template-columns: 1fr; gap: 16px; }
+        .interp-grid { grid-template-columns: 1fr; }
+    }
     </style>
 
     <div class="eval-shell">

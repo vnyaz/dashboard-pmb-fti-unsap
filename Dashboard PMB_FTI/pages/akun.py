@@ -218,6 +218,14 @@ def _form_css():
                   padding:10px 14px; border-radius:4px; font-size:13px; font-weight:700;
                   margin-bottom:16px; }
     .pw-mask { -webkit-text-security:disc; font-family:text-security-disc,monospace; }
+
+    @media (max-width: 768px) {
+        .akun-shell { grid-template-columns: 1fr; display: flex; flex-direction: column; }
+        .akun-sidebar { min-height: auto; padding: 20px; }
+        .logout-link { margin-top: 40px; }
+        .akun-content { padding: 20px; }
+        .form-row { grid-template-columns: 1fr; }
+    }
     """
 
 def _hash_js():
