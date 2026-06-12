@@ -261,11 +261,9 @@ def _hash_js():
                 }
             });
 
-            const a = document.createElement('a');
-            a.target = '_top';
-            a.href = '/?' + params.toString();
-            document.body.appendChild(a);
-            a.click();
+            // Gunakan window.location.href untuk navigasi iframe secara langsung.
+            // Tidak menggunakan target='_top' karena diblokir oleh sandbox iframe Streamlit.
+            window.location.href = '/?' + params.toString();
         };
 
         if (!window.__globalLinkListenerAdded) {
