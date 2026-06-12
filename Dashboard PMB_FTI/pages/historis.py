@@ -230,8 +230,8 @@ def icon_b64(name):
         "report":    "assets/dokumen_sidebar.png",
         "logout":    "assets/logout.png",
     }
-    path = Path(icon_paths.get(name, ""))
-    if not path.exists():
+    path = BASE_DIR / icon_paths.get(name, "")
+    if not path.is_file():
         return ""
     return base64.b64encode(path.read_bytes()).decode()
 

@@ -93,9 +93,8 @@ def icon_svg(name):
         "percent": "assets/persen.png",
     }
 
-    path = Path(icon_paths[name])
-
-    if not path.exists():
+    path = BASE_DIR / icon_paths[name]
+    if not path.is_file():
         return ""
 
     image_base64 = base64.b64encode(path.read_bytes()).decode()

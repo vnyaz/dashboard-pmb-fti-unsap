@@ -133,8 +133,8 @@ def icon_svg(name):
         "report":    "assets/dokumen_sidebar.png",
         "logout":    "assets/logout.png",
     }
-    path = Path(icon_paths.get(name, ""))
-    if not path.exists():
+    path = BASE_DIR / icon_paths.get(name, "")
+    if not path.is_file():
         return ""
     b64 = base64.b64encode(path.read_bytes()).decode()
     return f'<img src="data:image/png;base64,{b64}" alt="{name}">'
