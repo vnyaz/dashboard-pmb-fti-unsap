@@ -9,8 +9,9 @@ import pandas as pd
 import streamlit as st
 
 
-DB_PATH = Path("database.db")
-MODEL_PATH = Path("model_rfr.pkl")
+BASE_DIR = Path(__file__).resolve().parent.parent
+DB_PATH = BASE_DIR / "database.db"
+MODEL_PATH = BASE_DIR / "model_rfr.pkl"
 TARGET_COLUMN = "total_mahasiswa"
 
 MODEL_FEATURE_COLUMNS = [

@@ -6,7 +6,8 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
-DB_PATH = Path("database.db")
+BASE_DIR = Path(__file__).resolve().parent.parent
+DB_PATH = BASE_DIR / "database.db"
 
 
 # ── Database ──────────────────────────────────────────────────────────────────

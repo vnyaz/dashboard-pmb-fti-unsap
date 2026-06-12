@@ -7,8 +7,9 @@ from pathlib import Path
 
 import streamlit as st
 
-LOGO_PATH = Path("logo_fti.png")
-DB_PATH   = Path("database.db")
+BASE_DIR = Path(__file__).resolve().parent
+LOGO_PATH = BASE_DIR / "logo_fti.png"
+DB_PATH   = BASE_DIR / "database.db"
 
 
 def hash_password(raw: str) -> str:

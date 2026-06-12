@@ -2,8 +2,9 @@ import sqlite3
 import hashlib
 from datetime import datetime
 
-DB_NAME = "database.db"
-
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent
+DB_NAME = BASE_DIR / "database.db"
 # =====================================================
 # KONEKSI DATABASE
 # =====================================================

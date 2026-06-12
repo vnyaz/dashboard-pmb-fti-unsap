@@ -10,7 +10,7 @@ def image_to_base64(path):
 
 
 def show_landing():
-    logo_path = Path("D:/vvvv/SKRIPSI/Dashboard PMB_FTI/logo_fti.png")
+    logo_path = Path(__file__).parent.parent / "logo_fti.png"
     logo_base64 = image_to_base64(logo_path)
 
     st.html(f"""

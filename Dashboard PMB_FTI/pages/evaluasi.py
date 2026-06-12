@@ -16,8 +16,9 @@ except Exception:
     mean_squared_error = None
     r2_score = None
 
-DB_PATH = Path("database.db")
-MODEL_PATH = Path("model_rfr.pkl")
+BASE_DIR = Path(__file__).resolve().parent.parent
+DB_PATH = BASE_DIR / "database.db"
+MODEL_PATH = BASE_DIR / "model_rfr.pkl"
 FEATURE_COLUMNS = ["biaya_kuliah", "akreditasi", "kuota_beasiswa", "jumlah_prodi"]
 TARGET_COLUMN = "total_mahasiswa"
 
