@@ -261,7 +261,11 @@ def _hash_js():
                 if (el.name) params.set(el.name, el.value);
             });
 
-            window.parent.location.href = '/?' + params.toString();
+            const a = document.createElement('a');
+            a.target = '_top';
+            a.href = '/?' + params.toString();
+            document.body.appendChild(a);
+            a.click();
         };
 
         // Pasang event listener secara global agar tidak terhapus oleh DOMPurify
