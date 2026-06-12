@@ -7,7 +7,7 @@ from pathlib import Path
 
 import streamlit as st
 
-LOGO_PATH = Path("D:/vvvv/SKRIPSI/Dashboard PMB_FTI/logo_fti.png")
+LOGO_PATH = Path("logo_fti.png")
 DB_PATH   = Path("database.db")
 
 
