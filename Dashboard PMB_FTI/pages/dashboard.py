@@ -670,7 +670,9 @@ def show_dashboard():
     }}
 
     .summary-highlight {{
-        color: #ff7a00;
+        color: #ffce3a !important; /* brighter yellow-orange to contrast with teal */
+        font-weight: 900 !important;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     }}
 
     .correlation-panel {{
@@ -716,13 +718,6 @@ def show_dashboard():
 
     .correlation-value {{
         text-align: right;
-    }}
-
-    .summary-highlight {{
-        color: #4a9498;
-        background: rgba(74, 148, 152, 0.1);
-        padding: 2px 8px;
-        border-radius: 4px;
     }}
 
     @media (max-width: 768px) {{

@@ -319,7 +319,7 @@ def show_prediksi():
         line-height: 1.35;
     }
     .p-logout {
-        margin-top: 24px;
+        margin-top: 220px;
         color: white !important; text-decoration: none !important;
         display: flex; align-items: center; gap: 12px; font-size: 16px;
     }
@@ -334,7 +334,7 @@ def show_prediksi():
         box-shadow: 0 2px 6px rgba(0,0,0,.25);
         box-sizing: border-box;
         width: calc(100vw - 280px);
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 280px;
         z-index: 9998;
