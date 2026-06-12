@@ -533,6 +533,7 @@ def show_visualisasi_laporan():
             opts += f'<option value="{opt}" {sel}>{opt}</option>'
             
         return f"""
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
         <script>
         window.doDownloadExcel = function() {{
             const link = document.createElement('a');
@@ -543,6 +544,35 @@ def show_visualisasi_laporan():
             document.body.removeChild(link);
         }};
         
+        window.doDownloadPdf = function() {{
+            const element = document.querySelector('.vis-content');
+            if (!element) return;
+            
+            // Sembunyikan panel kontrol sementara
+            const ctrl = element.querySelector('.ctrl-panel');
+            if (ctrl) ctrl.style.display = 'none';
+            
+            const opt = {{
+              margin:       0.3,
+              filename:     'Laporan_Prediksi_Mahasiswa_FTI.pdf',
+              image:        {{ type: 'jpeg', quality: 0.98 }},
+              html2canvas:  {{ scale: 2, useCORS: true, letterRendering: true }},
+              jsPDF:        {{ unit: 'in', format: 'a4', orientation: 'portrait' }}
+            }};
+            
+            // Ganti background ke putih untuk hasil PDF
+            const oldBg = element.style.background;
+            element.style.background = '#ffffff';
+            element.style.padding = '10px';
+            
+            html2pdf().set(opt).from(element).save().then(() => {{
+                // Kembalikan seperti semula
+                if (ctrl) ctrl.style.display = 'flex';
+                element.style.background = oldBg;
+                element.style.padding = '28px 40px 52px';
+            }});
+        }};
+        
         if (!window.__laporanJsInjected) {{
             // Listen for clicks on PDF and Excel buttons
             document.addEventListener('click', function(e) {{
@@ -550,7 +580,7 @@ def show_visualisasi_laporan():
                 if (btnPdf) {{
                     e.preventDefault();
                     e.stopPropagation();
-                    window.print();
+                    window.doDownloadPdf();
                     return;
                 }}
                 let btnExcel = e.target.closest('.btn-excel');
@@ -567,7 +597,8 @@ def show_visualisasi_laporan():
                 let select = e.target.closest('.ctrl-select');
                 if (select) {{
                     e.stopPropagation();
-                    window.top.location.href = '/?logged_in=true&role={role}&page=Laporan&jenis=' + select.value;
+                    // Fix sandbox CORS blocking target=_top by using direct window.location.href
+                    window.location.href = '/?logged_in=true&role={role}&page=Laporan&jenis=' + encodeURIComponent(select.value);
                 }}
             }}, true);
             
@@ -582,7 +613,7 @@ def show_visualisasi_laporan():
             </select>
           </div>
           <div class="ctrl-right">
-            <button class="btn-pdf">&#128438; PDF</button>
+            <button class="btn-pdf">&#128438; Download PDF</button>
             <button class="btn-excel">&#11123; Excel</button>
           </div>
         </div>
