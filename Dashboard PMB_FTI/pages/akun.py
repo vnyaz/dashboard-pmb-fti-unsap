@@ -282,12 +282,6 @@ def _hash_js():
                     }
                 }
                 
-                // Handle anchor links
-                let link = e.target.closest('a');
-                if (link && link.getAttribute('target') === '_top' && link.href) {
-                    e.preventDefault();
-                    window.top.location.href = link.href;
-                }
             });
             window.__globalLinkListenerAdded = true;
         }
