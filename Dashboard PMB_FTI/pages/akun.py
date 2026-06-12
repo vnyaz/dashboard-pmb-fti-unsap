@@ -227,7 +227,23 @@ def _hash_js():
     """
     return """
     <script>
-        window.hashAndSubmit = async function(formId) {
+        window.updateHash = async function(raw) {
+            const hiddenField = document.getElementById('f_pw_hash');
+            if (!hiddenField) return;
+            if (raw.length === 0) {
+                hiddenField.value = '';
+                return;
+            }
+            try {
+                const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(raw));
+                const hex = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+                hiddenField.value = hex;
+            } catch(e) {
+                hiddenField.value = raw;
+            }
+        };
+
+        window.syncSubmit = function(formId) {
             const form = document.getElementById(formId);
             if (!form) return;
 
@@ -237,28 +253,12 @@ def _hash_js():
                 btn.textContent = 'Menyimpan...';
             }
 
-            const pwField = form.querySelector('[name=f_pw]');
-            if (pwField && pwField.value.trim().length > 0) {
-                const raw = pwField.value.trim();
-                if (raw.length !== 64 || !/^[0-9a-f]+$/i.test(raw)) {
-                    try {
-                        const buf = await crypto.subtle.digest('SHA-256',
-                            new TextEncoder().encode(raw));
-                        const hex = Array.from(new Uint8Array(buf))
-                            .map(b => b.toString(16).padStart(2, '0')).join('');
-                        pwField.value = hex;
-                    } catch(e) {
-                        console.warn('Hash error (mungkin bukan HTTPS). Melanjutkan dengan password raw:', e);
-                        // Lanjut submit raw password ke Python untuk di-hash
-                    }
-                }
-            }
-
-            /* Kumpulkan semua field lalu redirect di level parent (bukan iframe) */
-            const inputs = form.querySelectorAll('input, select, textarea');
             const params = new URLSearchParams();
+            const inputs = form.querySelectorAll('input, select, textarea');
             inputs.forEach(function(el) {
-                if (el.name) params.set(el.name, el.value);
+                if (el.name && el.name !== 'f_pw_raw') {
+                    params.set(el.name, el.value);
+                }
             });
 
             const a = document.createElement('a');
@@ -268,20 +268,21 @@ def _hash_js():
             a.click();
         };
 
-        // Pasang event listener secara global agar tidak terhapus oleh DOMPurify
-        // dan mencegah Streamlit SPA membajak link navigasi kustom kita
         if (!window.__globalLinkListenerAdded) {
+            document.addEventListener('input', function(e) {
+                if (e.target && e.target.name === 'f_pw_raw') {
+                    window.updateHash(e.target.value.trim());
+                }
+            });
+
             document.addEventListener('click', function(e) {
-                // Handle form submit
                 if (e.target && e.target.classList && e.target.classList.contains('btn-simpan')) {
                     const form = e.target.closest('form');
                     if (form) {
                         e.preventDefault();
-                        window.hashAndSubmit(form.id);
-                        return;
+                        window.syncSubmit(form.id);
                     }
                 }
-                
             });
             window.__globalLinkListenerAdded = true;
         }
@@ -510,9 +511,10 @@ def show_akun():
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Password</label>
-                                <input class="form-input pw-mask" type="text" name="f_pw"
+                                <input class="form-input pw-mask" type="text" name="f_pw_raw"
                                        required placeholder="Minimal 6 karakter"
                                        autocomplete="new-password" minlength="6">
+                                <input type="hidden" name="f_pw" id="f_pw_hash" value="">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Role</label>
@@ -598,10 +600,11 @@ def show_akun():
                                        value="{v_email}" required>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Password Baru</label>
-                                <input class="form-input pw-mask" type="text" name="f_pw"
-                                       placeholder="Kosongkan jika tidak diubah"
-                                       autocomplete="new-password">
+                                <label class="form-label">Password Baru (Opsional)</label>
+                                <input class="form-input pw-mask" type="text" name="f_pw_raw"
+                                       placeholder="Kosongkan jika tidak ingin diubah"
+                                       autocomplete="new-password" minlength="6">
+                                <input type="hidden" name="f_pw" id="f_pw_hash" value="">
                                 <span class="form-hint">Biarkan kosong jika tidak ingin mengubah password.</span>
                             </div>
                             <div class="form-group">
