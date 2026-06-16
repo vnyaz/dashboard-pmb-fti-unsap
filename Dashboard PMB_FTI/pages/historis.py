@@ -411,13 +411,15 @@ def show_historis():
     .table-card {
         background: white; box-shadow: 0 3px 8px rgba(0,0,0,0.25);
         padding: 20px 22px 24px; margin-bottom: 24px;
+        overflow-x: auto;
     }
     .table-card-header {
         display: flex; justify-content: space-between;
         align-items: center; margin-bottom: 16px;
+        flex-wrap: wrap; gap: 12px;
     }
     .table-card-title { color: #4a9498; font-size: 18px; font-weight: 800; }
-    .table-card-actions { display: flex; gap: 10px; }
+    .table-card-actions { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn-upload {
         background: #4a9498; color: white !important; text-decoration: none !important;
         padding: 8px 18px; border-radius: 4px; font-size: 14px;
@@ -428,7 +430,7 @@ def show_historis():
         padding: 8px 18px; border-radius: 4px; font-size: 14px;
         font-weight: 700; display: inline-flex; align-items: center;
     }
-    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; white-space: nowrap; }
     .data-table th {
         background: #4a9498; color: white; padding: 10px 12px;
         text-align: left; font-weight: 700; font-size: 13px;
@@ -443,6 +445,7 @@ def show_historis():
     .stats-card {
         background: white; box-shadow: 0 3px 8px rgba(0,0,0,0.25);
         padding: 20px 22px 24px; border: 2px solid #4a9498;
+        overflow-x: auto;
     }
     .stats-card-title { color: #4a9498; font-size: 17px; font-weight: 800; margin-bottom: 14px; }
     .stats-table { width: 100%; border-collapse: collapse; font-size: 14px; }

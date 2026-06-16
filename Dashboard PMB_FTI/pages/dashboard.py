@@ -528,8 +528,8 @@ def show_dashboard():
 
     .kpi-grid {{
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 58px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px;
         margin-bottom: 24px;
     }}
 
@@ -585,7 +585,7 @@ def show_dashboard():
 
     .middle-grid {{
         display: grid;
-        grid-template-columns: 1fr 1.05fr;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         gap: 24px;
         margin-bottom: 34px;
     }}
