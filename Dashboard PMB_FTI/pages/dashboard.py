@@ -528,8 +528,8 @@ def show_dashboard():
 
     .kpi-grid {{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 32px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
         margin-bottom: 24px;
     }}
 
@@ -541,16 +541,16 @@ def show_dashboard():
 
     .kpi-card {{
         min-height: 122px;
-        padding: 20px 26px;
+        padding: 16px 20px;
         display: grid;
-        grid-template-columns: 58px 1fr;
+        grid-template-columns: 50px 1fr;
         align-items: center;
         column-gap: 12px;
     }}
 
     .kpi-icon {{
-        width: 58px;
-        height: 58px;
+        width: 50px;
+        height: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -559,33 +559,33 @@ def show_dashboard():
     }}
 
     .kpi-icon img {{
-        width: 38px;
-        height: 38px;
+        width: 32px;
+        height: 32px;
         object-fit: contain;
     }}
 
     .kpi-label {{
         color: #4a9498;
         font-weight: 800;
-        font-size: 17px;
+        font-size: 15px;
         line-height: 1.2;
     }}
 
     .kpi-value {{
-        margin-top: 8px;
+        margin-top: 6px;
         color: #4a9498;
-        font-size: 34px;
+        font-size: 28px;
         font-weight: 800;
     }}
 
     .kpi-value span {{
-        font-size: 19px;
-        margin-left: 8px;
+        font-size: 16px;
+        margin-left: 6px;
     }}
 
     .middle-grid {{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: 1fr 1.05fr;
         gap: 24px;
         margin-bottom: 34px;
     }}

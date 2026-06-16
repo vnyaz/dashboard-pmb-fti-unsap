@@ -228,11 +228,11 @@ def show_evaluasi():
     .eval-header span {{ display:block; color:#4a9498; font-size:17px; margin-top:5px; font-weight:800; }}
     .eval-content {{ padding:34px 52px 52px; }}
 
-    .metric-grid {{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:24px; margin-bottom:24px; }}
+    .metric-grid {{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:20px; margin-bottom:24px; }}
     .metric-card, .empty-card {{ background:white; box-shadow:0 3px 8px rgba(0,0,0,.25); }}
     .metric-card {{ min-height:92px; padding:16px 20px; }}
-    .metric-label {{ color:#4a9498; font-size:17px; font-weight:800; }}
-    .metric-value {{ color:#4a9498; font-size:32px; font-weight:900; line-height:1.05; margin-top:6px; }}
+    .metric-label {{ color:#4a9498; font-size:15px; font-weight:800; }}
+    .metric-value {{ color:#4a9498; font-size:28px; font-weight:900; line-height:1.05; margin-top:6px; }}
     .metric-sub {{ color:#4a9498; font-size:12px; font-weight:800; margin-top:4px; }}
     .empty-card {{ padding:26px 28px; }}
     .empty-title {{ color:#4a9498; font-size:20px; font-weight:800; margin-bottom:8px; }}
@@ -240,7 +240,7 @@ def show_evaluasi():
     .empty-action {{ background:#4a9498; color:white; text-decoration:none; display:inline-flex; padding:9px 18px; border-radius:4px; font-size:14px; font-weight:800; }}
     .interp-card {{ background:white; box-shadow:0 3px 8px rgba(0,0,0,.25); padding:24px 26px 28px; overflow-x:auto; }}
     .interp-title {{ color:#4a9498; font-size:18px; font-weight:800; margin-bottom:20px; }}
-    .interp-grid {{ display:grid; grid-template-columns:repeat(auto-fit, minmax(350px, 1fr)); gap:20px; }}
+    .interp-grid {{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }}
     .interp-item {{ background:#f7fafb; border-left:4px solid #4a9498; padding:16px 18px; border-radius:0 4px 4px 0; }}
     .interp-metric {{ color:#4a9498; font-size:14px; font-weight:800; margin-bottom:8px; }}
     .interp-desc {{ color:#3a4f58; font-size:13px; font-weight:600; line-height:1.6; }}

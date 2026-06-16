@@ -806,14 +806,14 @@ def show_visualisasi_laporan():
     .btn-excel {{ background:#4a9498; color:white; text-decoration:none; padding:10px 20px; border-radius:4px; font-size:14px; font-weight:700; display:flex; align-items:center; gap:8px; box-shadow:0 2px 4px rgba(74,148,152,.3); transition:background 0.2s; }}
     .btn-excel:hover {{ background:#3a7d80; }}
 
-    .kpi-grid{{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:20px;margin-bottom:24px;}}
+    .kpi-grid{{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:24px;}}
     .kpi-card{{padding:16px 18px;border-radius:6px;color:white;box-shadow:0 3px 8px rgba(0,0,0,.2);}}
     .kpi-blue{{background:#2980b9;}}.kpi-orange{{background:#e67e22;}}.kpi-teal{{background:#4a9498;}}.kpi-red{{background:#c0392b;}}
     .kpi-top{{font-size:13px;font-weight:700;opacity:.9;margin-bottom:6px;}}
     .kpi-val{{font-size:28px;font-weight:800;line-height:1;}}
     .kpi-sub{{font-size:11px;margin-top:5px;opacity:.8;}}
 
-    .mid-grid{{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:20px;margin-bottom:24px;}}
+    .mid-grid{{display:grid;grid-template-columns:1.5fr 0.8fr 1.5fr;gap:20px;margin-bottom:24px;}}
     .panel{{background:white;box-shadow:0 3px 8px rgba(0,0,0,.2);padding:16px 18px 20px;border-radius:4px;overflow-x:auto;}}
     .panel-title{{color:#4a9498;font-size:16px;font-weight:800;margin-bottom:12px;}}
 
@@ -823,7 +823,7 @@ def show_visualisasi_laporan():
     .var-val{{font-size:18px;font-weight:800;margin-top:2px;}}
 
     .eks-panel{{background:white;box-shadow:0 3px 8px rgba(0,0,0,.2);padding:20px 24px 28px;border-radius:4px;overflow-x:auto;}}
-    .eks-grid{{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:32px;margin-top:12px;}}
+    .eks-grid{{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:12px;}}
     .eks-head{{font-size:14px;font-weight:800;color:#4a9498;margin-bottom:10px;border-bottom:2px solid #4a9498;padding-bottom:4px;}}
     .eks-item{{display:flex;gap:10px;margin-bottom:10px;font-size:13px;line-height:1.5;}}
     .eks-dot{{flex:0 0 18px;font-size:15px;}}
