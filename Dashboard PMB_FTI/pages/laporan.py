@@ -5,6 +5,7 @@ import pickle
 import sqlite3
 from pathlib import Path
 from textwrap import dedent
+import time
 
 import pandas as pd
 import streamlit as st
@@ -483,13 +484,13 @@ def show_visualisasi_laporan():
     # sidebar
     if role == "admin":
         extra_menu = f"""
-    <a class="side-item" href="/?logged_in=true&role={role}&page=Histori" target="_top">
+    <a class="side-item" href="/?logged_in=true&role={role}&page=Histori&_t={int(time.time())}" target="_self">
        <span class="side-icon">{icon_b64("database")}</span> Data Historis</a>
-    <a class="side-item" href="/?logged_in=true&role={role}&page=Prediksi" target="_top">
+    <a class="side-item" href="/?logged_in=true&role={role}&page=Prediksi&_t={int(time.time())}" target="_self">
        <span class="side-icon">{icon_b64("chart")}</span> Prediksi Mahasiswa Baru</a>
-    <a class="side-item" href="/?logged_in=true&role={role}&page=Evaluasi" target="_top">
+    <a class="side-item" href="/?logged_in=true&role={role}&page=Evaluasi&_t={int(time.time())}" target="_self">
        <span class="side-icon">{icon_b64("list")}</span> Evaluasi Model</a>
-    <a class="side-item" href="/?logged_in=true&role={role}&page=Akun" target="_top">
+    <a class="side-item" href="/?logged_in=true&role={role}&page=Akun&_t={int(time.time())}" target="_self">
        <span class="side-icon">{icon_b64("account")}</span> Manajemen Akun</a>"""
     else:
         extra_menu = ""
@@ -851,14 +852,14 @@ def show_visualisasi_laporan():
         <div class="brand-title">Prediksi Mahasiswa</div>
         <div class="brand-subtitle">Fakultas Teknologi Informasi</div>
         <nav class="side-menu">
-          <a class="side-item" href="/?logged_in=true&role={role}&page=Dashboard" target="_top">
+          <a class="side-item" href="/?logged_in=true&role={role}&page=Dashboard&_t={int(time.time())}" target="_self">
             <span class="side-icon">{icon_b64("dashboard")}</span> Dashboard Utama</a>
           {extra_menu}
-          <a class="side-item active" href="/?logged_in=true&role={role}&page=Laporan" target="_top">
+          <a class="side-item active" href="/?logged_in=true&role={role}&page=Laporan&_t={int(time.time())}" target="_self">
             <span class="side-icon">{icon_b64("report")}</span> Visualisasi dan Laporan</a>
         </nav>
         <div class="sidebar-user">{html.escape(active_name)}<br>{html.escape(role_label)}</div>
-        <a class="logout-link" href="/?logout=true" target="_top">
+        <a class="logout-link" href="/?logout=true" target="_self">
           <span class="side-icon">{icon_b64("logout")}</span> Log out</a>
       </aside>
 

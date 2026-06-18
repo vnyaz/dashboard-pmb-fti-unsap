@@ -2,6 +2,7 @@ import base64
 import html
 import pickle
 import sqlite3
+import time
 from pathlib import Path
 from textwrap import dedent
 
@@ -250,29 +251,29 @@ def show_dashboard():
     if role == "admin":
         extra_menu = f"""
     <a class="side-item"
-       href="/?logged_in=true&role={role}&page=Histori"
-       target="_top">
+       href="/?logged_in=true&role={role}&page=Histori&_t={int(time.time())}"
+       target="_self">
        <span class="side-icon">{icon_svg("database")}</span>
        Data Historis
     </a>
 
     <a class="side-item"
-       href="/?logged_in=true&role={role}&page=Prediksi"
-       target="_top">
+       href="/?logged_in=true&role={role}&page=Prediksi&_t={int(time.time())}"
+       target="_self">
        <span class="side-icon">{icon_svg("chart")}</span>
        Prediksi Mahasiswa Baru
     </a>
 
     <a class="side-item"
-       href="/?logged_in=true&role={role}&page=Evaluasi"
-       target="_top">
+       href="/?logged_in=true&role={role}&page=Evaluasi&_t={int(time.time())}"
+       target="_self">
        <span class="side-icon">{icon_svg("list")}</span>
        Evaluasi Model
     </a>
 
     <a class="side-item"
-       href="/?logged_in=true&role={role}&page=Akun"
-       target="_top">
+       href="/?logged_in=true&role={role}&page=Akun&_t={int(time.time())}"
+       target="_self">
        <span class="side-icon">{icon_svg("account")}</span>
        Manajemen Akun
     </a>
@@ -280,15 +281,16 @@ def show_dashboard():
     else:
         extra_menu = ""
 
-    if df.empty:
+    hist_tersedia = not df.empty
+    if not hist_tersedia:
         chart_column_count = 1
         dashboard_content = f"""
                 <div class="empty-panel">
-                    <div class="empty-title">Data historis belum tersedia</div>
+                    <div class="empty-title">Selamat Datang di Dashboard</div>
                     <div class="empty-text">
                         Tambahkan data pada halaman Data Historis agar informasi dashboard dapat ditampilkan.
                     </div>
-                    <a class="empty-action" href="/?logged_in=true&role={role}&page=Histori" target="_top">
+                    <a class="empty-action" href="/?logged_in=true&role={role}&page=Histori&_t={int(time.time())}" target="_self">
                         Buka Data Historis
                     </a>
                 </div>
@@ -385,16 +387,25 @@ def show_dashboard():
         grid-template-columns: 280px 1fr;
         background: #e3e7eb;
         color: #123047;
-        font-family: Arial, sans-serif;
     }}
 
+    /* ── Sidebar: absolute, ikut scroll ── */
     .dashboard-sidebar {{
+        width: 280px;
         background: #4a9498;
         color: white;
         padding: 36px 22px 28px;
         display: flex;
         flex-direction: column;
-        min-height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: auto;
+        min-height: 180vh;
+        overflow: visible;
+        z-index: 9999;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
     }}
 
     .brand-title {{
@@ -466,13 +477,20 @@ def show_dashboard():
         font-size: 16px;
     }}
 
+    /* ── Header ── */
     .dashboard-header {{
         height: 84px;
         background: white;
         display: flex;
         align-items: center;
         padding: 0 28px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 2px 6px rgba(0,0,0,.25);
+        box-sizing: border-box;
+        width: calc(100vw - 280px);
+        position: absolute;
+        top: 0;
+        left: 280px;
+        z-index: 9998;
     }}
 
     .dashboard-header h1 {{
@@ -736,7 +754,7 @@ def show_dashboard():
 
             <nav class="side-menu">
                 <a class="side-item active"
-                   href="/?logged_in=true&role={role}&page=Dashboard"
+                   href="/?logged_in=true&role={role}&page=Dashboard&_t={int(time.time())}"
                    target="_self">
                    <span class="side-icon">{icon_svg("dashboard")}</span>
                    Dashboard Utama
@@ -745,7 +763,7 @@ def show_dashboard():
                 {extra_menu}
 
                 <a class="side-item"
-                   href="/?logged_in=true&role={role}&page=Laporan"
+                   href="/?logged_in=true&role={role}&page=Laporan&_t={int(time.time())}"
                    target="_self">
                    <span class="side-icon">{icon_svg("report")}</span>
                    Visualisasi dan Laporan

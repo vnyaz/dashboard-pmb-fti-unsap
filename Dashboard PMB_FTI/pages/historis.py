@@ -2,6 +2,8 @@ import base64
 import html as html_lib
 import sqlite3
 from pathlib import Path
+import time
+import time
 
 import pandas as pd
 import streamlit as st
@@ -250,7 +252,7 @@ def show_historis():
     role        = st.session_state.get("role", "admin")
     role_label  = "Administrator" if role == "admin" else "Staff FTI"
     active_name = "Admin BAAK FTI" if role == "admin" else "Staff FTI"
-    base        = f"/?logged_in=true&role={role}"
+    base        = f"/?logged_in=true&role={role}&_t={int(time.time())}"
 
     mode       = st.query_params.get("mode", "")
     edit_tahun = st.query_params.get("edit_tahun", "")
@@ -310,19 +312,18 @@ def show_historis():
     }
     .dh-sidebar {
         width: 280px;
-        min-width: 280px;
         background: #4a9498;
         color: white;
         padding: 36px 22px 28px;
         display: flex;
         flex-direction: column;
-        min-height: 180vh;
         position: absolute;
         top: 0;
         left: 0;
         height: auto;
+        min-height: 180vh;
         overflow: visible;
-        z-index: 100;
+        z-index: 9999;
         box-sizing: border-box;
         font-family: Arial, sans-serif;
     }
@@ -556,23 +557,23 @@ div[data-testid="stMarkdownContainer"] p strong {
         <div class="brand-title">Prediksi Mahasiswa</div>
         <div class="brand-subtitle">Fakultas Teknologi Informasi</div>
         <div class="side-menu">
-            <a class="side-item" href="{base}&page=Dashboard" target="_top">
+            <a class="side-item" href="{base}&page=Dashboard" target="_self">
                 {make_icon("dashboard")}Dashboard Utama</a>
-            <a class="side-item active" href="{base}&page=Histori" target="_top">
+            <a class="side-item active" href="{base}&page=Histori" target="_self">
                 {make_icon("database")}Data Historis</a>
-            <a class="side-item" href="{base}&page=Prediksi" target="_top">
+            <a class="side-item" href="{base}&page=Prediksi" target="_self">
                 {make_icon("chart")}Prediksi Mahasiswa Baru</a>
-            <a class="side-item" href="{base}&page=Evaluasi" target="_top">
+            <a class="side-item" href="{base}&page=Evaluasi" target="_self">
                 {make_icon("list")}Evaluasi Model</a>
-            <a class="side-item" href="{base}&page=Akun" target="_top">
+            <a class="side-item" href="{base}&page=Akun" target="_self">
                 {make_icon("account")}Manajemen Akun</a>
-            <a class="side-item" href="{base}&page=Laporan" target="_top">
+            <a class="side-item" href="{base}&page=Laporan" target="_self">
                 {make_icon("report")}Visualisasi dan Laporan</a>
         </div>
         <div class="sidebar-user">
             {html_lib.escape(active_name)}<br>{html_lib.escape(role_label)}
         </div>
-        <a class="logout-link" href="/?logout=true" target="_top">
+        <a class="logout-link" href="/?logout=true" target="_self">
             {make_icon("logout")}Log out
         </a>
     </div>

@@ -3,6 +3,7 @@ import hashlib
 import html
 import sqlite3
 from pathlib import Path
+import time
 from textwrap import dedent
 import streamlit as st
 
@@ -325,7 +326,7 @@ def show_akun():
 
     role_label  = "Administrator" if role == "admin" else "Staff FTI"
     active_name = "Admin BAAK FTI" if role == "admin" else "Staff FTI"
-    base        = f"/?logged_in=true&role={role}"
+    base        = f"/?logged_in=true&role={role}&_t={int(time.time())}"
     mode        = qp.get("mode", "")
     target_id   = qp.get("user_id", "")
 
