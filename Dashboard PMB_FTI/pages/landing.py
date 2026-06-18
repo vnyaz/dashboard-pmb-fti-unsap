@@ -89,31 +89,7 @@ def show_landing():
     width: 72%;
 }}
 
-.stats {{
-    margin-top: 90px;
-    display: flex;
-    gap: 24px;
-}}
 
-.stat-card {{
-    flex: 1;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
-    padding: 34px 38px;
-    color: white;
-    backdrop-filter: blur(10px);
-}}
-
-.stat-card h2 {{
-    font-size: 40px;
-    margin: 0 0 12px 0;
-    font-weight: 800;
-}}
-
-.stat-card p {{
-    font-size: 20px;
-    margin: 0;
-}}
 </style>
 
 <div class="navbar">
@@ -136,26 +112,6 @@ def show_landing():
         membantu manajemen FTI memproyeksikan tren pendaftar di masa depan.
     </div>
 
-    <div class="stats">
-        <div class="stat-card">
-            <h2>99.87%</h2>
-            <p>Akurasi Model</p>
-        </div>
 
-        <div class="stat-card">
-            <h2>5 Tahun</h2>
-            <p>Data Historis</p>
-        </div>
-
-        <div class="stat-card">
-            <h2>4 Variabel</h2>
-            <p>Prediktor</p>
-        </div>
-
-        <div class="stat-card">
-            <h2>Random Forest</h2>
-            <p>Algoritma</p>
-        </div>
-    </div>
 </div>
 """)
