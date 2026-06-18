@@ -174,6 +174,33 @@ def show_evaluasi():
             else f"{fmt_number(metrics['r2'] * 100)}% variasi dijelaskan"
         )
         r2_pct = fmt_number(metrics['r2'] * 100) if metrics['r2'] is not None else 'N/A'
+        
+        # ── Dynamic Interpretations ──
+        mae_val = metrics['mae']
+        if mae_val <= 5:
+            mae_desc = "Nilai MAE ini tergolong sangat kecil, menunjukkan bahwa secara rata-rata prediksi model sangat akurat dan menyimpang sangat sedikit dari data aktual mahasiswa."
+        elif mae_val <= 15:
+            mae_desc = "Nilai MAE ini tergolong cukup baik, menunjukkan bahwa prediksi model memiliki tingkat penyimpangan yang wajar dari data aktual."
+        else:
+            mae_desc = "Nilai MAE ini tergolong cukup besar, menunjukkan bahwa prediksi model masih memiliki rentang penyimpangan yang lumayan jauh dari data aktual."
+
+        mse_desc = "MSE memberikan bobot penalti yang lebih besar pada kesalahan prediksi yang jauh dari target. Semakin kecil nilai ini, semakin baik model dalam menghindari kesalahan fatal (outlier) saat memprediksi."
+
+        r2_val = metrics['r2']
+        if r2_val is None:
+            r2_desc = "Nilai R² belum dapat dihitung karena keterbatasan jumlah data historis (butuh minimal 2 data untuk evaluasi)."
+            kesimpulan_desc = "Model belum dapat dievaluasi secara komprehensif karena data yang tersedia terlalu sedikit. Tambahkan lebih banyak tahun akademik pada Data Historis."
+        else:
+            if r2_val >= 0.8:
+                r2_desc = f"Nilai R² sebesar <strong>{r2_value}</strong> menunjukkan bahwa model mampu menjelaskan <strong>{r2_pct}%</strong> variansi dari data mahasiswa baru, yang mengindikasikan tingkat akurasi prediksi yang <strong>sangat tinggi</strong>."
+                kesimpulan_desc = "Berdasarkan ketiga metrik di atas, model Random Forest yang dibangun memiliki performa prediksi yang <strong>sangat baik dan akurat</strong> terhadap data historis FTI UNSAP. Model ini <strong>sangat layak</strong> digunakan sebagai alat bantu utama perencanaan penerimaan mahasiswa baru."
+            elif r2_val >= 0.5:
+                r2_desc = f"Nilai R² sebesar <strong>{r2_value}</strong> menunjukkan bahwa model mampu menjelaskan <strong>{r2_pct}%</strong> variansi data. Ini mengindikasikan akurasi prediksi yang <strong>cukup memadai</strong>, meskipun masih ada margin error."
+                kesimpulan_desc = "Model Random Forest menunjukkan performa prediksi yang wajar dan <strong>cukup layak</strong> digunakan sebagai alat bantu tambahan. Namun, disarankan untuk memperbanyak data historis di tahun mendatang agar akurasi model semakin tajam."
+            else:
+                r2_desc = f"Nilai R² sebesar <strong>{r2_value}</strong> menunjukkan bahwa model hanya mampu menjelaskan <strong>{r2_pct}%</strong> variansi data. Ini mengindikasikan bahwa akurasi prediksi model <strong>masih rendah</strong>."
+                kesimpulan_desc = "Saat ini performa prediksi model masih tergolong rendah karena gagal menangkap pola data dengan baik. Model <strong>belum layak</strong> dijadikan acuan utama. Sangat disarankan untuk memasukkan lebih banyak data historis sebelum menggunakan hasil prediksinya."
+
         content_html = f"""
         <div class="metric-grid">
             <div class="metric-card"><div class="metric-label">MAE</div><div class="metric-value">{fmt_number(metrics['mae'])}</div><div class="metric-sub">mahasiswa</div></div>
@@ -187,19 +214,19 @@ def show_evaluasi():
             <div class="interp-grid">
                 <div class="interp-item">
                     <div class="interp-metric">MAE (Mean Absolute Error)</div>
-                    <div class="interp-desc">Rata-rata selisih absolut antara nilai aktual dan prediksi model adalah <strong>{fmt_number(metrics['mae'])}</strong> mahasiswa. Nilai MAE yang kecil menunjukkan bahwa prediksi model mendekati data aktual tanpa memperhatikan arah kesalahan.</div>
+                    <div class="interp-desc">Rata-rata selisih absolut antara nilai aktual dan prediksi model adalah <strong>{fmt_number(metrics['mae'])}</strong> mahasiswa. {mae_desc}</div>
                 </div>
                 <div class="interp-item">
                     <div class="interp-metric">MSE (Mean Squared Error)</div>
-                    <div class="interp-desc">Nilai MSE sebesar <strong>{fmt_number(metrics['mse'])}</strong> merupakan rata-rata kuadrat dari selisih prediksi dan aktual. MSE memberikan bobot lebih besar pada kesalahan yang besar, sehingga sensitif terhadap outlier dalam data.</div>
+                    <div class="interp-desc">Nilai MSE yang dihasilkan adalah sebesar <strong>{fmt_number(metrics['mse'])}</strong>. {mse_desc}</div>
                 </div>
                 <div class="interp-item">
                     <div class="interp-metric">R² (Koefisien Determinasi)</div>
-                    <div class="interp-desc">Nilai R² sebesar <strong>{r2_value}</strong> menunjukkan bahwa model mampu menjelaskan <strong>{r2_pct}%</strong> variansi dari data total mahasiswa baru, yang mengindikasikan tingkat akurasi prediksi yang sangat tinggi.</div>
+                    <div class="interp-desc">{r2_desc}</div>
                 </div>
                 <div class="interp-item">
                     <div class="interp-metric">Kesimpulan Umum</div>
-                    <div class="interp-desc">Berdasarkan ketiga metrik di atas, model Random Forest yang dibangun memiliki performa prediksi yang sangat baik terhadap data historis FTI UNSAP. Model ini layak digunakan sebagai alat bantu perencanaan penerimaan mahasiswa baru.</div>
+                    <div class="interp-desc">{kesimpulan_desc}</div>
                 </div>
             </div>
         </div>

@@ -389,23 +389,13 @@ def show_dashboard():
         color: #123047;
     }}
 
-    /* ── Sidebar: absolute, ikut scroll ── */
     .dashboard-sidebar {{
-        width: 280px;
         background: #4a9498;
         color: white;
         padding: 36px 22px 28px;
         display: flex;
         flex-direction: column;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: auto;
-        min-height: 180vh;
-        overflow: visible;
-        z-index: 9999;
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
+        min-height: 100vh;
     }}
 
     .brand-title {{
@@ -477,20 +467,13 @@ def show_dashboard():
         font-size: 16px;
     }}
 
-    /* ── Header ── */
     .dashboard-header {{
         height: 84px;
         background: white;
         display: flex;
         align-items: center;
         padding: 0 28px;
-        box-shadow: 0 2px 6px rgba(0,0,0,.25);
-        box-sizing: border-box;
-        width: calc(100vw - 280px);
-        position: absolute;
-        top: 0;
-        left: 280px;
-        z-index: 9998;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
     }}
 
     .dashboard-header h1 {{
