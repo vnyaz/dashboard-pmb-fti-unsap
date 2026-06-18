@@ -464,23 +464,23 @@ def show_prediksi():
         <div class="p-brand-title">Prediksi Mahasiswa</div>
         <div class="p-brand-sub">Fakultas Teknologi Informasi</div>
         <nav class="p-nav">
-            <a class="p-nav-item" href="{base}&page=Dashboard" target="_self">
+            <a class="p-nav-item" href="{base}&page=Dashboard" target="_top">
                 <span class="p-nav-icon">{make_icon("dashboard")}</span>Dashboard Utama</a>
-            <a class="p-nav-item" href="{base}&page=Histori" target="_self">
+            <a class="p-nav-item" href="{base}&page=Histori" target="_top">
                 <span class="p-nav-icon">{make_icon("database")}</span>Data Historis</a>
-            <a class="p-nav-item active" href="{base}&page=Prediksi" target="_self">
+            <a class="p-nav-item active" href="{base}&page=Prediksi" target="_top">
                 <span class="p-nav-icon">{make_icon("chart")}</span>Prediksi Mahasiswa Baru</a>
-            <a class="p-nav-item" href="{base}&page=Evaluasi" target="_self">
+            <a class="p-nav-item" href="{base}&page=Evaluasi" target="_top">
                 <span class="p-nav-icon">{make_icon("list")}</span>Evaluasi Model</a>
-            <a class="p-nav-item" href="{base}&page=Akun" target="_self">
+            <a class="p-nav-item" href="{base}&page=Akun" target="_top">
                 <span class="p-nav-icon">{make_icon("account")}</span>Manajemen Akun</a>
-            <a class="p-nav-item" href="{base}&page=Laporan" target="_self">
+            <a class="p-nav-item" href="{base}&page=Laporan" target="_top">
                 <span class="p-nav-icon">{make_icon("report")}</span>Visualisasi dan Laporan</a>
         </nav>
         <div class="p-sidebar-user">
             {html_lib.escape(active_name)}<br>{html_lib.escape(role_label)}
         </div>
-        <a class="p-logout" href="/?logout=true" target="_self">
+        <a class="p-logout" href="/?logout=true" target="_top">
             <span class="p-nav-icon">{make_icon("logout")}</span>Log out</a>
     </div>
     <header class="p-header">
@@ -609,7 +609,7 @@ def show_prediksi():
                 <td>{html_lib.escape(str(r['top_feature']))} ({float(r['top_pct']):.1f}%)</td>
                 <td><a class="p-delete-btn"
                        href="{base}&page=Prediksi&hapus_riwayat={int(r['id'])}"
-                       target="_self">Hapus</a></td>
+                       target="_top">Hapus</a></td>
             </tr>"""
 
     st.markdown(f"""

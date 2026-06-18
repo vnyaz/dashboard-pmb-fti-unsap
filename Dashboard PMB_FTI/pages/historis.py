@@ -556,23 +556,23 @@ div[data-testid="stMarkdownContainer"] p strong {
         <div class="brand-title">Prediksi Mahasiswa</div>
         <div class="brand-subtitle">Fakultas Teknologi Informasi</div>
         <div class="side-menu">
-            <a class="side-item" href="{base}&page=Dashboard" target="_self">
+            <a class="side-item" href="{base}&page=Dashboard" target="_top">
                 {make_icon("dashboard")}Dashboard Utama</a>
-            <a class="side-item active" href="{base}&page=Histori" target="_self">
+            <a class="side-item active" href="{base}&page=Histori" target="_top">
                 {make_icon("database")}Data Historis</a>
-            <a class="side-item" href="{base}&page=Prediksi" target="_self">
+            <a class="side-item" href="{base}&page=Prediksi" target="_top">
                 {make_icon("chart")}Prediksi Mahasiswa Baru</a>
-            <a class="side-item" href="{base}&page=Evaluasi" target="_self">
+            <a class="side-item" href="{base}&page=Evaluasi" target="_top">
                 {make_icon("list")}Evaluasi Model</a>
-            <a class="side-item" href="{base}&page=Akun" target="_self">
+            <a class="side-item" href="{base}&page=Akun" target="_top">
                 {make_icon("account")}Manajemen Akun</a>
-            <a class="side-item" href="{base}&page=Laporan" target="_self">
+            <a class="side-item" href="{base}&page=Laporan" target="_top">
                 {make_icon("report")}Visualisasi dan Laporan</a>
         </div>
         <div class="sidebar-user">
             {html_lib.escape(active_name)}<br>{html_lib.escape(role_label)}
         </div>
-        <a class="logout-link" href="/?logout=true" target="_self">
+        <a class="logout-link" href="/?logout=true" target="_top">
             {make_icon("logout")}Log out
         </a>
     </div>

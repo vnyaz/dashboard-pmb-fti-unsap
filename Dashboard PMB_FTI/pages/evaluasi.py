@@ -162,7 +162,7 @@ def show_evaluasi():
         <div class="empty-card">
             <div class="empty-title">Evaluasi model belum tersedia</div>
             <div class="empty-text">{html.escape(error)} Tambahkan data di halaman Data Historis agar evaluasi dapat dihitung secara realtime.</div>
-            <a class="empty-action" href="{base}&page=Histori" target="_self">Buka Data Historis</a>
+            <a class="empty-action" href="{base}&page=Histori" target="_top">Buka Data Historis</a>
         </div>
         """
     else:
@@ -260,15 +260,15 @@ def show_evaluasi():
             <div class="brand-title">Prediksi Mahasiswa</div>
             <div class="brand-subtitle">Fakultas Teknologi Informasi</div>
             <nav class="side-menu">
-                <a class="side-item" href="{base}&page=Dashboard" target="_self"><span class="side-icon">{icon_svg('dashboard')}</span>Dashboard Utama</a>
-                <a class="side-item" href="{base}&page=Histori" target="_self"><span class="side-icon">{icon_svg('database')}</span>Data Historis</a>
-                <a class="side-item" href="{base}&page=Prediksi" target="_self"><span class="side-icon">{icon_svg('chart')}</span>Prediksi Mahasiswa Baru</a>
-                <a class="side-item active" href="{base}&page=Evaluasi" target="_self"><span class="side-icon">{icon_svg('list')}</span>Evaluasi Model</a>
-                <a class="side-item" href="{base}&page=Akun" target="_self"><span class="side-icon">{icon_svg('account')}</span>Manajemen Akun</a>
-                <a class="side-item" href="{base}&page=Laporan" target="_self"><span class="side-icon">{icon_svg('report')}</span>Visualisasi dan Laporan</a>
+                <a class="side-item" href="{base}&page=Dashboard" target="_top"><span class="side-icon">{icon_svg('dashboard')}</span>Dashboard Utama</a>
+                <a class="side-item" href="{base}&page=Histori" target="_top"><span class="side-icon">{icon_svg('database')}</span>Data Historis</a>
+                <a class="side-item" href="{base}&page=Prediksi" target="_top"><span class="side-icon">{icon_svg('chart')}</span>Prediksi Mahasiswa Baru</a>
+                <a class="side-item active" href="{base}&page=Evaluasi" target="_top"><span class="side-icon">{icon_svg('list')}</span>Evaluasi Model</a>
+                <a class="side-item" href="{base}&page=Akun" target="_top"><span class="side-icon">{icon_svg('account')}</span>Manajemen Akun</a>
+                <a class="side-item" href="{base}&page=Laporan" target="_top"><span class="side-icon">{icon_svg('report')}</span>Visualisasi dan Laporan</a>
             </nav>
             <div class="sidebar-user">{html.escape(active_name)}<br>{html.escape(role_label)}</div>
-            <a class="logout-link" href="/?logout=true" target="_self"><span class="side-icon">{icon_svg('logout')}</span>Log out</a>
+            <a class="logout-link" href="/?logout=true" target="_top"><span class="side-icon">{icon_svg('logout')}</span>Log out</a>
         </aside>
         <main class="eval-main">
             <header class="eval-header"><div><h1>Evaluasi Model</h1><span>FTI UNSAP</span></div></header>

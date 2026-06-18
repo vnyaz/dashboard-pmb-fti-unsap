@@ -98,7 +98,7 @@ def show_landing():
         <h1>SISTEM PREDIKSI PMB FTI UNSAP</h1>
     </div>
 
-    <a class="login-btn" href="/?page=Login" target="_self">LOGIN</a>
+    <a class="login-btn" href="/?page=Login" target="_top">LOGIN</a>
 </div>
 
 <div class="landing-content">

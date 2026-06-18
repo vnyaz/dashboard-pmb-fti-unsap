@@ -163,7 +163,7 @@ def login_page():
         login_clicked = st.form_submit_button("LOGIN")
 
     st.markdown(
-        '<div class="back-link"><a href="/" target="_self">← Kembali ke beranda</a></div>',
+        '<div class="back-link"><a href="/" target="_top">← Kembali ke beranda</a></div>',
         unsafe_allow_html=True,
     )
 

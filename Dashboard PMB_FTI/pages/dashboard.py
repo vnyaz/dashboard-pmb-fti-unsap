@@ -251,28 +251,28 @@ def show_dashboard():
         extra_menu = f"""
     <a class="side-item"
        href="/?logged_in=true&role={role}&page=Histori"
-       target="_self">
+       target="_top">
        <span class="side-icon">{icon_svg("database")}</span>
        Data Historis
     </a>
 
     <a class="side-item"
        href="/?logged_in=true&role={role}&page=Prediksi"
-       target="_self">
+       target="_top">
        <span class="side-icon">{icon_svg("chart")}</span>
        Prediksi Mahasiswa Baru
     </a>
 
     <a class="side-item"
        href="/?logged_in=true&role={role}&page=Evaluasi"
-       target="_self">
+       target="_top">
        <span class="side-icon">{icon_svg("list")}</span>
        Evaluasi Model
     </a>
 
     <a class="side-item"
        href="/?logged_in=true&role={role}&page=Akun"
-       target="_self">
+       target="_top">
        <span class="side-icon">{icon_svg("account")}</span>
        Manajemen Akun
     </a>
@@ -288,7 +288,7 @@ def show_dashboard():
                     <div class="empty-text">
                         Tambahkan data pada halaman Data Historis agar informasi dashboard dapat ditampilkan.
                     </div>
-                    <a class="empty-action" href="/?logged_in=true&role={role}&page=Histori" target="_self">
+                    <a class="empty-action" href="/?logged_in=true&role={role}&page=Histori" target="_top">
                         Buka Data Historis
                     </a>
                 </div>
