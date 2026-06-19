@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 
 st.set_page_config(
     page_title="PMB FTI UNSAP",
@@ -33,6 +34,8 @@ if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 if "role" not in st.session_state:
     st.session_state.role = None
+if "last_active" not in st.session_state:
+    st.session_state.last_active = time.time()
 
 
 # ── Baca query params ─────────────────────────────────────────────────────────
@@ -53,6 +56,24 @@ elif f_role_session in ("admin", "internal"):
 if query_logged_in == "true" and effective_role:
     st.session_state.logged_in = True
     st.session_state.role      = effective_role
+
+# ── Cek Session Timeout (120 Menit) ───────────────────────────────────────────
+SESSION_TIMEOUT_SECONDS = 120 * 60  # 120 menit dalam detik
+
+if st.session_state.logged_in:
+    current_time = time.time()
+    if current_time - st.session_state.last_active > SESSION_TIMEOUT_SECONDS:
+        # Sesi habis
+        st.session_state.logged_in = False
+        st.session_state.role = None
+        st.session_state.last_active = current_time
+        st.query_params.clear()
+        st.query_params["page"] = "Login"
+        st.query_params["timeout"] = "true"
+        st.rerun()
+    else:
+        # Perbarui waktu aktivitas terakhir jika masih aktif
+        st.session_state.last_active = current_time
 
 
 # ── Routing ───────────────────────────────────────────────────────────────────

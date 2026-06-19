@@ -157,6 +157,9 @@ def login_page():
         """
     )
 
+    if st.query_params.get("timeout") == "true":
+        st.warning("Sesi Anda telah berakhir karena tidak ada aktivitas selama 120 menit. Silakan login kembali.")
+
     with st.form("login_form"):
         email         = st.text_input("Email")
         password      = st.text_input("Password", type="password")
