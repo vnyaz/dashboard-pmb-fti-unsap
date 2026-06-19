@@ -310,7 +310,7 @@ def build_trend_chart(pred_series, latest_yr):
         f'<text x="{pad_l+cw-37}" y="18" font-size="13" font-weight="700" fill="#e9a800">Prediksi</text>'
     )
 
-    svg = f"""<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+    svg = f"""<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#4a9498" stop-opacity="0.3"/>
@@ -375,7 +375,7 @@ def build_bar_comparison(df):
         f'<text x="{pad_l+147}" y="{H-22}" font-size="12" font-weight="700" fill="#b07000">Jumlah Mahasiswa</text>'
     )
 
-    svg = f"""<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+    svg = f"""<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
   {gridlines}
   <line x1="{pad_l}" y1="15" x2="{pad_l}" y2="{15+ch}" stroke="#c4ced4" stroke-width="1.5"/>
   <line x1="{pad_l}" y1="{15+ch}" x2="{W-10}" y2="{15+ch}" stroke="#c4ced4" stroke-width="1.5"/>
