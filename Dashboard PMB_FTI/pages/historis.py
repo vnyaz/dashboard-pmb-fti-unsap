@@ -1,15 +1,21 @@
 import base64
 import html as html_lib
 import sqlite3
+import pickle
 from pathlib import Path
-import time
 import time
 
 import pandas as pd
 import streamlit as st
 
+try:
+    from sklearn.ensemble import RandomForestRegressor
+except Exception:
+    RandomForestRegressor = None
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 DB_PATH = BASE_DIR / "database.db"
+MODEL_PATH = BASE_DIR / "model_rfr.pkl"
 
 
 # ── Database ──────────────────────────────────────────────────────────────────
@@ -57,6 +63,28 @@ def load_data_historis():
         )
     return df
 
+def auto_retrain_model():
+    if RandomForestRegressor is None:
+        return
+    with get_connection() as conn:
+        df = pd.read_sql_query("SELECT * FROM data_historis", conn)
+    
+    if len(df) < 2:
+        return
+        
+    df["total"] = df["informatika"] + df["sistem_informasi"]
+    X = df[["biaya_kuliah", "akreditasi", "kuota_beasiswa", "jumlah_prodi"]]
+    y = df["total"]
+    
+    model = RandomForestRegressor(n_estimators=100, random_state=42)
+    model.fit(X, y)
+    
+    with MODEL_PATH.open("wb") as f:
+        pickle.dump(model, f)
+        
+    # Hapus cache Streamlit agar prediksi/evaluasi langsung menggunakan model baru
+    st.cache_resource.clear()
+
 
 def upsert_row(tahun, informatika, sistem_informasi, biaya_kuliah, akreditasi, kuota_beasiswa, jumlah_prodi):
     with get_connection() as conn:
@@ -75,11 +103,13 @@ def upsert_row(tahun, informatika, sistem_informasi, biaya_kuliah, akreditasi, k
             """,
             (tahun, informatika, sistem_informasi, biaya_kuliah, akreditasi, kuota_beasiswa, jumlah_prodi),
         )
+    auto_retrain_model()
 
 
 def delete_row(tahun):
     with get_connection() as conn:
         conn.execute("DELETE FROM data_historis WHERE tahun = ?", (tahun,))
+    auto_retrain_model()
 
 
 def get_row(tahun):
