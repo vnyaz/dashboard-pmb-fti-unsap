@@ -221,12 +221,11 @@ def _form_css():
     .pw-mask { -webkit-text-security:disc; font-family:text-security-disc,monospace; }
 
     @media (max-width: 768px) {
-        .akun-shell { grid-template-columns: 200px 1fr; display: grid; }
-        .akun-sidebar { min-height: 100vh; padding: 20px 14px; }
-        .brand-title { font-size: 16px; }
-        .side-item { font-size: 13px; padding: 8px; }
-        main { overflow-x: auto; }
-        .akun-content { min-width: 800px; padding: 20px; }
+        .akun-shell { grid-template-columns: 1fr; display: flex; flex-direction: column; }
+        .akun-sidebar { min-height: auto; padding: 20px; }
+        .logout-link { margin-top: 40px; }
+        .akun-content { padding: 20px; }
+        .form-row { grid-template-columns: 1fr; }
     }
     """
 

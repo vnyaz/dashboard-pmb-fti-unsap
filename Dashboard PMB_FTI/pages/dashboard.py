@@ -722,12 +722,11 @@ def show_dashboard():
     }}
 
     @media (max-width: 768px) {
-        .dashboard-shell { grid-template-columns: 200px 1fr; display: grid; }
-        .dashboard-sidebar { padding: 20px 14px; min-height: 100vh; }
-        .brand-title { font-size: 16px; }
-        .side-item { font-size: 13px; padding: 8px; }
-        .dashboard-main { overflow-x: auto; }
-        .dashboard-content { min-width: 800px; padding: 20px; }
+        .dashboard-shell { grid-template-columns: 1fr; display: flex; flex-direction: column; }
+        .dashboard-sidebar { min-height: auto; padding: 20px; }
+        .logout-link { margin-top: 40px; }
+        .dashboard-content { padding: 20px; }
+        .kpi-grid, .middle-grid { grid-template-columns: 1fr; gap: 16px; }
     }
     </style>
 
