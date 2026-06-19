@@ -425,13 +425,13 @@ def show_historis():
     .stTextInput input:focus, .stSelectbox select:focus, .stNumberInput input:focus { border-color: #4a9498 !important; box-shadow: none !important; }
 
     @media (max-width: 768px) {
-        .dh-outer { flex-direction: column; }
-        .dh-sidebar { width: 100%; position: relative; min-height: auto; padding: 20px; }
-        .dh-main { margin-left: 0; }
-        .logout-link { margin-top: 40px; }
-        .dh-content { padding: 20px; }
-        .summary-grid, .btn-row, .edit-btn-row { grid-template-columns: 1fr; gap: 16px; }
-        .dh-header { padding: 0 20px; }
+        section[data-testid="stMain"] > div.block-container { padding: 0 0 0 200px !important; }
+        .dh-sidebar { width: 200px; padding: 20px 14px; min-height: 100vh; }
+        .brand-title { font-size: 16px; }
+        .side-item { font-size: 13px; padding: 8px; }
+        .dh-main { margin-left: 200px; overflow-x: auto; position: absolute; left: 0; right: 0; }
+        .dh-content { min-width: 800px; padding: 20px; }
+        .dh-header { padding: 0 20px; min-width: 800px; }
     }
     .logout-link {
         margin-top: 220px; color: white !important; text-decoration: none !important;

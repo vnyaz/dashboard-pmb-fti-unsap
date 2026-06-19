@@ -448,13 +448,13 @@ def show_prediksi():
     }
 
     @media (max-width: 768px) {
-        section[data-testid="stMain"] > div.block-container { padding: 120px 20px 40px 20px !important; }
-        .p-sidebar { width: 100%; position: relative; min-height: auto; padding: 20px; }
-        .p-header { left: 0; width: 100%; padding: 0 20px; }
-        .p-logout { margin-top: 40px; }
-        .p-result-card { padding: 20px; min-height: auto; }
-        .p-result-legend { grid-template-columns: 1fr 1fr; }
-        .p-rtable { display: block; overflow-x: auto; white-space: nowrap; }
+        section[data-testid="stMain"] > div.block-container { padding: 0 !important; }
+        .p-shell { grid-template-columns: 200px 1fr !important; display: grid !important; flex-direction: row !important; }
+        .p-sidebar { min-height: 100vh; padding: 20px 14px; width: auto; position: static; }
+        .p-brand-title { font-size: 16px; }
+        .p-nav-item { font-size: 13px; padding: 8px; }
+        .p-main { overflow-x: auto; position: static; margin-left: 0; }
+        .p-content { min-width: 800px; padding: 20px; }
     }
     </style>
     """, unsafe_allow_html=True)

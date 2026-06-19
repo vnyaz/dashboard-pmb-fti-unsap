@@ -837,13 +837,12 @@ def show_visualisasi_laporan():
     .empty-msg{{background:white;padding:28px;color:#52666d;font-size:15px;font-weight:700;border-radius:4px;}}
 
     @media (max-width: 768px) {{
-        .vis-shell {{ grid-template-columns: 1fr; display: flex; flex-direction: column; }}
-        .vis-sidebar {{ min-height: auto; padding: 20px; }}
-        .logout-link {{ margin-top: 40px; }}
-        .vis-content {{ padding: 20px; }}
-        .kpi-grid, .mid-grid, .eks-grid {{ grid-template-columns: 1fr; gap: 16px; }}
-        .ctrl-panel {{ flex-direction: column; align-items: flex-start; gap: 16px; }}
-        .pred-table {{ display: block; overflow-x: auto; white-space: nowrap; }}
+        .vis-shell {{ grid-template-columns: 200px 1fr; display: grid; }}
+        .vis-sidebar {{ min-height: 100vh; padding: 20px 14px; }}
+        .brand-title {{ font-size: 16px; }}
+        .side-item {{ font-size: 13px; padding: 8px; }}
+        main {{ overflow-x: auto; }}
+        .vis-content {{ min-width: 800px; padding: 20px; }}
     }}
     </style>
 
