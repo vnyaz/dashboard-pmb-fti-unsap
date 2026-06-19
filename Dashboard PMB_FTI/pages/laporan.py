@@ -558,7 +558,7 @@ def show_visualisasi_laporan():
               filename:     'Laporan_Prediksi_Mahasiswa_FTI.pdf',
               image:        {{ type: 'jpeg', quality: 0.98 }},
               html2canvas:  {{ scale: 2, useCORS: true, letterRendering: true }},
-              jsPDF:        {{ unit: 'in', format: 'a4', orientation: 'portrait' }}
+              jsPDF:        {{ unit: 'in', format: 'a4', orientation: 'landscape' }}
             }};
             
             // Ganti background ke putih untuk hasil PDF
